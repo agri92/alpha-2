@@ -1,0 +1,71 @@
+{% extends 'admin_templates/admin_home.html' %}
+{% load static %}
+{% block title %}Alpha Master | Registro Pago{% endblock title %}
+{% block body %}
+<div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1 class="m-0">Registro Pago</h1>
+              </div><!-- /.col -->
+              <div class="col-sm-6">
+                <a href="{% url 'add_pago' %}" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Agregar</a>
+              </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <section class="content">
+      <div class="container-fluid">
+           <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Buscar">
+
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>Matricula</th>
+                      <th>Nombre</th>
+                      <th>Importe</th>
+                      <th>Fecha de pago</th>
+                      <th>Acción</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for pago in pagos %}
+                    <tr>
+                      <td>{{ pago.student_id }}</td>
+                      <td>{{ pago.student_id.admin.first_name }}</td>
+                      <td>{{ pago.importe }}</td>
+                      <td>{{ pago.created_at }}</td>
+                      <td>
+                        <a href="/edit_course/{{ course.id }}" class="btn btn-primary"><i class="fas fa-info"></i></a>
+                        <a href="/edit_course/{{ course.id }}" class="btn btn-success"><i class="far fa-edit"></i></a>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /.content -->
+      
+{% endblock body %}

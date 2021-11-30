@@ -1,0 +1,43 @@
+{% extends 'admin_templates/admin_home.html' %}
+{% load static %}
+{% block title %}Alpha Master | Alumnos{% endblock title %}
+{% block body %}
+<div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1 class="m-0">Añadir alumno</h1>
+              </div><!-- /.col -->
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item"><a href="{% url 'manage_students' %}">Regresar</a></li>
+                </ol>
+              </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Añadir Alumno</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+                 {% url 'add_student_save' as action_path %}
+                {% include 'hod_template/form_template.html' with messages=messages form=form action_path=action_path button_text="Add Student" %}
+            </div>
+            <!-- /.card -->
+
+
+
+          </div>
+          </div>
+      </div>
+    </section>
+    <!-- /.content -->
+{% endblock body %}
